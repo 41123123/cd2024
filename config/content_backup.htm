@@ -322,22 +322,91 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console2"></textarea></div>
 <div style="width: 100%; height: 100%;"></div>
 <h1>作業</h1>
-<p>w1</p>
-<p>w2</p>
-<p>w3</p>
-<p>w4</p>
-<p>w5</p>
-<p>w6</p>
-<p>w9</p>
-<p>W10</p><h2>w1</h2>
+<p></p><h2>w1</h2>
 <p dir="auto">1.建立個人倉儲<span> </span><a href="https://github.com/41123123/cd2024">https://github.com/41123123/cd2024</a></p>
 <p dir="auto">2.下載可攜套件 下載可攜程式環境: portable_2024.7z </p>
-<p dir="auto">3.下載 miktex-portable.7z<span> </span></p><h2>w2</h2>
-<p><span>1.創建自己的倉儲(cd2024)</span></p><h2>w3</h2>
+<p dir="auto">3.下載 miktex-portable.7z<span> </span></p>
+<h2>w2</h2>
+<p><span>1.創建自己的倉儲(cd2024)</span></p>
+<h2>w3</h2>
+<p dir="auto">1.為教學影片上其影片逐字稿</p>
 <h2>w4</h2>
-<h2>w5</h2>
-<h2>w6</h2>
-<h2>w7</h2>
-<h2>w8</h2>
-<h2>w9</h2>
+<p><span>1.將自己的倉儲加入小組成為子模組</span></p>
+<p><span>2.將教學字幕影片上傳到小組網誌</span></p>
+<p></p>
 <h2>W10</h2>
+<h3>上傳任務一</h3>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import window, ajax, document, html
+  
+def fetch_csv_data():
+  # CSV 檔案網址
+  url = "https://mdecd2024.github.io/2astud-2asite/downloads/2a.txt"
+    
+  def on_complete(req):
+    if req.status == 200 or req.status == 0:
+      # 讀取 CSV 檔案內容
+      content = req.text
+    
+      # 依照換行符號拆分資料
+      lines = content.split('\n')
+    
+      # 建立空列表儲存資料
+      data = []
+    
+      # 遍歷每一行資料
+      for line in lines:
+        # 忽略空白行
+        if line.strip() == "":
+          continue
+    
+        # 依照逗號拆分資料
+        items = line.split(',')
+    
+        # 將拆分後的資料加入列表
+        data.append(items)
+        
+      # 必須去除 data 的第一列標題資料, 只取序號為 1 之後的資料
+      data = data[1:]
+    
+      # 取得 html 可以插入的標註位置
+      brython_div = document["brython_div1"]
+      course_title = "cd2024"
+  
+      # 逐一處理學員資料
+      index = 0
+      for items in data:
+        index += 1
+        student_id, github_username, group = items
+          
+        if github_username == "":
+          github_username = "000"
+          
+        # 建立網站和倉儲連結，使用正確的模板
+        site_url = f"https://{github_username}.github.io/{course_title}"
+        repo_url = f"https://github.com/{github_username}/{course_title}"
+        group_site_url = f"https://mdecd2024.github.io/2a-midag{group}"
+        group_repo_url = f"https://github.com/mdecd2024/2a-midag{group}"
+  
+        # 添加學號, 網站, 倉儲連結和序號到 brython_div
+        brython_div &lt;= str(index) + ". " + html.A(student_id, href=site_url)
+        brython_div &lt;= " ("
+        brython_div &lt;= html.A("repo", href=repo_url)
+        brython_div &lt;= ") | "
+        brython_div &lt;= html.A("Group Site", href=group_site_url)
+        brython_div &lt;= " | "
+        brython_div &lt;= html.A("Group Repo", href=group_repo_url)
+        brython_div &lt;= html.BR()
+  
+    else:
+      print("Error:", req.text)
+    
+  # 發送 AJAX 請求
+  req = ajax.ajax()
+  req.bind('complete', on_complete)
+  req.open('GET', url, True)
+  req.set_header('content-type', 'application/x-www-form-urlencoded')
+  req.send()
+    
+# 呼叫函式讀取 CSV 資料
+fetch_csv_data()</pre>
+<p></p>
