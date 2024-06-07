@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>協同產品產品設計實習 - w14</title><link href="./" rel="alternate"></link><link href="./feeds/w14.atom.xml" rel="self"></link><id>./</id><updated>2024-06-07T06:37:07+08:00</updated><entry><title>2024 Spring 課程 w14 41123123</title><link href="./2024-Spring-w14-blog-tutorial%2041123123.html" rel="alternate"></link><published>2024-05-23T11:00:00+08:00</published><updated>2024-06-07T06:37:07+08:00</updated><author><name>41123123</name></author><id>tag:None,2024-05-23:./2024-Spring-w14-blog-tutorial 41123123.html</id><summary type="html">&lt;p&gt;2024 Spring 網際內容管理與協同產品設計實習w14課程.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;2024 Spring 網際內容管理與協同產品設計實習w14課程.&lt;/p&gt;
+
+
+&lt;p&gt;1.修改足球機器人的場景並加入籃框及空氣牆
+2.修改足球機器人程式:將一個球增加至10個
+3.遇到問題:執行時球會碰撞而飛走&lt;/p&gt;</content><category term="w14"></category><category term="網誌編寫 pelican"></category></entry></feed>
